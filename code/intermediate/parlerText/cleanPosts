@@ -1,0 +1,10 @@
+for i in {0..10}
+
+# print out date so we know how far we've got through
+do date
+echo $i
+
+
+json2csv -i  /home/beeb/Insync/sei2112@columbia.edu/Google\ Drive/Columbia\ SusDev\ PhD/Research/My\ work/parler/data/raw/parler/posts/parler_data00000000000$i.ndjson -f username,createdAtFormatted,body,urls,comments,reposts -o /home/beeb/Insync/sei2112@columbia.edu/Google\ Drive/Columbia\ SusDev\ PhD/Research/My\ work/parler/data/intermediate/parler/posts/parler_data00000000000$i.csv
+
+done 
