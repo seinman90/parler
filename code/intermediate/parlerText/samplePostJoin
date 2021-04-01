@@ -1,0 +1,11 @@
+#PATH=$PATH:~/.cargo/bin
+i=0
+for file1 in data/intermediate/parler/users/sample/*
+    do for file2 in data/intermediate/parler/posts/all/*
+	do i=$(($i+1))
+    echo $i
+	date
+    xsv join username $file1 username $file2 > data/intermediate/parler/posts/sample/postSample$i.csv
+    done
+done
+	
