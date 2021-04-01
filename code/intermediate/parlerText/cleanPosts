@@ -1,10 +1,9 @@
-for i in {0..10}
+for file in data/raw/parler/posts/*
 
 # print out date so we know how far we've got through
 do date
-echo $i
+i=$(echo $file | egrep -o '[0-9]+')
 
-
-json2csv -i  /home/beeb/Insync/sei2112@columbia.edu/Google\ Drive/Columbia\ SusDev\ PhD/Research/My\ work/parler/data/raw/parler/posts/parler_data00000000000$i.ndjson -f username,createdAtFormatted,body,urls,comments,reposts -o /home/beeb/Insync/sei2112@columbia.edu/Google\ Drive/Columbia\ SusDev\ PhD/Research/My\ work/parler/data/intermediate/parler/posts/parler_data00000000000$i.csv
+json2csv -i $file -f username,createdAtFormatted,body,urls,comments,reposts -o data/intermediate/parler/posts/parler_data00000000000$i.csv
 
 done 
