@@ -1,11 +1,16 @@
-#PATH=$PATH:~/.cargo/bin
+
 i=0
 for file1 in data/intermediate/parler/users/sample/*
-    do for file2 in data/intermediate/parler/posts/all/*
-	do i=$(($i+1))
-    echo $i
-	date
-    xsv join username $file1 username $file2 > data/intermediate/parler/posts/sample/postSample$i.csv
+    do echo $file1
+    sampledate=$(echo $file1 | rev | cut -d / -f1 | rev | cut -d . -f1)
+    echo $sampledate
+    mkdir data/intermediate/parler/posts/sample/$sampledate    
+    for file2 in data/intermediate/parler/posts/all/*
+        do echo $file2
+        echo $i
+        date
+        xsv join username $file1 username $file2 > data/intermediate/parler/posts/sample/$sampledate/postSample$i.csv
+        i=$(($i+1))
     done
 done
 	

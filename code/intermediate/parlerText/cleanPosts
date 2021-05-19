@@ -4,6 +4,6 @@ for file in data/raw/parler/posts/*
 do date
 i=$(echo $file | egrep -o '[0-9]+')
 echo $i
-json2csv -i $file -f username,createdAtformatted,body,urls,comments,reposts -o data/intermediate/parler/posts/parler_data$i.csv
+json2csv -i $file -f username,createdAtformatted,body,urls,comments,reposts -o data/intermediate/parler/posts/all/parler_data$i.csv
 
 done 

@@ -1,5 +1,7 @@
-for i in {0..8}
-do date
-echo $i
-json2csv -i /home/beeb/Insync/sei2112@columbia.edu/Google\ Drive/Columbia\ SusDev\ PhD/Research/My\ work/parler/data/raw/parler/users/parler_user00000000000$i.ndjson -f id,bio,user_followers,user_following,joined,lastseents,posts,username,state -o /home/beeb/Insync/sei2112@columbia.edu/Google\ Drive/Columbia\ SusDev\ PhD/Research/My\ work/parler/data/intermediate/parler/users/parler_user00000000000$i.csv
+for file in data/raw/parler/users/*
+    do i=$(echo $file | egrep -o '[0-9]+')
+    date
+    echo $i
+    json2csv -i $file -f id,bio,user_followers,user_following,joined,lastseents,posts,username,state -o data/intermediate/parler/users/all/parler_user$i.csv
 done
+
